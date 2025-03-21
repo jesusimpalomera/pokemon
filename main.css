@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png'); /* Fondo de Pokémon */
+    background-repeat: repeat; /* La imagen de fondo se repetirá */
+    animation: moverFondo 15s linear infinite; /* Movimiento de fondo */
+}
+
+@keyframes moverFondo {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: -100% 0;
+    }
+}
+
+.contenedor {
+    text-align: center;
+}
+
+.titulo h1 {
+    font-size: 3rem;
+    color: #ff4500; /* Color más fuerte para el título */
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra para resaltar el título */
+}
+
+.cuadro-opciones {
+    position: relative;
+}
+
+.p1, .p2 {
+    font-size: 1.8rem; /* Tamaño más grande para los botones */
+    color: #fff;
+    cursor: pointer;
+    padding: 15px 30px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 10px 0; /* Separación vertical entre los botones */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.p1 {
+    background-color: #ff6347; /* Rojo tomate para el botón "No" */
+    border: 2px solid #ff4500;
+    position: absolute;
+}
+
+.p2 {
+    background-color: #4caf50; /* Verde para el botón "Sí" */
+    border: 2px solid #388e3c;
+}
+
+.p1:hover {
+    background-color: #e24b3a; /* Color más oscuro para el botón "No" */
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Sombra más grande al hacer hover */
+}
+
+.p2:hover {
+    background-color: #45a049; /* Color más oscuro para el botón "Sí" */
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Sombra más grande al hacer hover */
+}
+
+#Si {
+    display: none;
+    margin-top: 20px;
+    font-size: 1.5rem;
+    color: #4caf50;
+    font-weight: bold;
+    position: relative;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
+}
+
+#Si h2 {
+    font-size: 2rem;
+    color: #2e7d32; /* Color verde para el mensaje */
+    font-weight: bold;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    animation: borderAnimation 2s infinite; /* Animación del borde */
+}
+
+/* Animación del borde */
+@keyframes borderAnimation {
+    0% {
+        border: 5px solid #ff6347; /* Rojo al principio */
+        box-shadow: 0 0 15px rgba(255, 99, 71, 0.7); /* Resplandor rojizo */
+    }
+    50% {
+        border: 5px solid #4caf50; /* Verde intermedio */
+        box-shadow: 0 0 15px rgba(76, 175, 80, 0.7); /* Resplandor verde */
+    }
+    100% {
+        border: 5px solid #ff6347; /* Vuelve al rojo */
+        box-shadow: 0 0 15px rgba(255, 99, 71, 0.7); /* Resplandor rojizo */
+    }
+}

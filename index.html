@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ver Pokémon conmigo?</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.0.0"></script>
+    <script>
+        $(document).ready(function(){
+            // Mover el botón "No" aleatoriamente por la pantalla cada 1 segundo
+            function moverBotonNo() {
+                let arriba = Math.random() * (window.innerHeight - 50); // Altura aleatoria
+                let izquierda = Math.random() * (window.innerWidth - 50); // Ancho aleatorio
+                $('#no').css({
+                    top: arriba + 'px',
+                    left: izquierda + 'px'
+                });
+            }
+
+            // Llamar a la función moverBotonNo cada 1 segundo
+            setInterval(moverBotonNo, 1000);
+
+            // Deshabilitar el botón "No" para que no se pueda seleccionar ni hacer clic
+            $('#no').css('pointer-events', 'none'); // Deshabilitar interacciones
+
+            // Cuando el botón "Sí" es presionado
+            $('.p2').click(function() {
+                // Hacer desaparecer ambos botones
+                $('.p1, .p2').fadeOut();
+                
+                // Mostrar el mensaje de "¡Sabía que querrías, pequeña!"
+                $('#Si').fadeIn();
+
+                // Iniciar los fuegos artificiales
+                iniciarFuegosArtificiales();
+            });
+
+            // Función para iniciar los fuegos artificiales
+            function iniciarFuegosArtificiales() {
+                const fireworks = new Fireworks.default({
+                    target: document.body, // Los fuegos aparecerán en el body
+                    hue: { min: 0, max: 360 }, // Colores aleatorios de los fuegos
+                    speed: 3, // Velocidad
+                    particles: 100, // Número de partículas
+                    trace: 3, // Efecto de estela
+                    explosion: 5, // Número de explosiones
+                    acceleration: 1.02, // Aceleración
+                    friction: 0.98, // Fricción
+                    gravity: 1, // Gravedad
+                });
+                fireworks.start(); // Inicia los fuegos artificiales
+            }
+
+            // Cuando el ratón se acerque al botón "No", se moverá rápidamente
+            $('#no').mouseenter(function() {
+                let arriba = Math.random() * (window.innerHeight - 50); // Nueva altura aleatoria
+                let izquierda = Math.random() * (window.innerWidth - 50); // Nuevo ancho aleatorio
+                $(this).stop(true, true).animate({
+                    top: arriba + 'px',
+                    left: izquierda + 'px'
+                }, 100); // Mover más rápido en 100ms (más rápido que antes)
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="contenedor">
+        <div class="titulo">
+            <h1>¿Quieres ver Pokémon conmigo?</h1>
+        </div>
+        <div class="cuadro-opciones">
+            <p class="p1" id="no">No</p>
+            <p class="p2">Sí</p>
+            <div id="Si" style="display: none;">
+                <h2>¡Sabía que querrías, pequeña!</h2>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
